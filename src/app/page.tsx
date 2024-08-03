@@ -21,13 +21,13 @@ export default function Home() {
 
     <div className="flex flex-col lg:flex-row gap-4 items-center justify-center w-full">
       {options.map( ( option ) => {
-        return <CGButton key={option.value}>
-          <Link
-            href={`/lectura/${option.value}`}
-            legacyBehavior passHref>
+        return <Link key={option.value}
+          href={`/lectura/${option.value}`}
+          legacyBehavior passHref>
+          <CGButton >
             {option.label}
-          </Link>
-        </CGButton>
+          </CGButton>
+        </Link>
       } )}
 
     </div>

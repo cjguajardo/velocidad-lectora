@@ -31,7 +31,7 @@ export default async function Page( { params }: { params: { hash: string } } ) {
   return <Section role="results">
     <CustomHeader title="Tus Resultados" />
     <div className="flex flex-col items-center justify-center mt-4 lg:mt-10">
-      <Card>
+      <Card className="mt-8">
         <CardHeader className="p-0">
           <Image src={result_picture} className="w-full h-[200px] object-cover rounded-t-lg" alt="Lectura" />
         </CardHeader>

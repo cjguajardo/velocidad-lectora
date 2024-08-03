@@ -10,6 +10,8 @@ import { useState } from "react"
 import CountDown from "./countdown"
 import { useLayoutEffect } from "react"
 import { useRouter } from 'next/navigation'
+import LoadingSkeleton from "@/components/other/loading-skeleton";
+import { speech_analisys_phrases } from "@/constants";
 
 export default function Read(
   { tale, }: { tale: string[] }
@@ -21,7 +23,6 @@ export default function Read(
   const [startCountdown, setStartCountdown] = useState<boolean>( false )
   const router = useRouter()
   const [fetching, setFetching] = useState<boolean>( false )
-  const [showText, setShowText] = useState<boolean>( false )
 
   const handleStart = () => {
     setStartCountdown( true )
@@ -66,26 +67,21 @@ export default function Read(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recorderState.audio, recorderState.progress] )
 
+  if ( fetching ) {
+    return <LoadingSkeleton title="Un momento por favor..." messages={speech_analisys_phrases} />
+  }
+
 
   return <div className="mb-10 lg:mb-32 text-center lg:mb-0 w-full lg:max-w-5xl lg:text-left gap-4">
     <Card>
       <CardContent className="relative">
-        {!fetching &&
-          <CountDown onCountdownFinished={handleCountDownFinish} start={startCountdown} />
-        }
-
-        {fetching && <div className="flex flex-col space-y-3 my-10">
-          <p className="text-lg lg:text-2xl">Un momento por favor, estoy procesando...</p>
-          <p className="text-sm lg:text-lg">Esto puede tardar unos segundos</p>
-        </div>
-        }
-
-        {!fetching && <div className="flex flex-col space-y-3 text-lg lg:text-2xl my-4">
+        <CountDown onCountdownFinished={handleCountDownFinish} start={startCountdown} />
+        <div className="flex flex-col space-y-3 text-lg lg:text-2xl my-4">
           {tale.map( ( paragraph, index ) => ( <p key={paragraph + index}>{paragraph}</p> ) )}
-        </div>}
+        </div>
       </CardContent>
     </Card>
-    {!fetching && tale.length > 1 &&
+    {tale.length > 1 &&
       <div className="flex flex-col fixed bottom-0 left-0 h-16 w-full backdrop-blur-2xl items-center justify-center">
         {!recorderState.isRecording && <Button className="w-[90%] mx-10 lg:w-[300px]" variant="default" onClick={handleStart}>Comenzar</Button>}
         {recorderState.isRecording && <Button className="w-[90%] mx-10 lg:w-[300px]" variant="default" onClick={cancelRecording}>Detener</Button>}

@@ -10,6 +10,21 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     '@storybook/addon-themes'
   ],
+  webpackFinal: async ( config ) => {
+    if ( config.resolve ) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@': '../src',
+      };
+    } else {
+      config.resolve = {
+        alias: {
+          '@': '../src',
+        },
+      };
+    }
+    return config;
+  },
   framework: {
     name: '@storybook/nextjs',
     options: {},

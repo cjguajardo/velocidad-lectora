@@ -2,10 +2,11 @@
 export const runtime = 'edge';
 import { getWordsFromSize } from "@/lib/tales";
 import Read from "@/components/other/read";
-import ReadSkeleton from "@/components/other/read-skeleton";
+import ReadSkeleton from "@/components/other/loading-skeleton";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { generate } from "@/app/actions";
 import Section from "@/components/other/section";
+import { wait_phrases } from "@/constants";
 
 export default function Page( { params }: { params: { size: string } } ) {
   const [isLoading, setIsloading] = useState( true );
@@ -27,7 +28,7 @@ export default function Page( { params }: { params: { size: string } } ) {
 
   return (
     <Section role="read-measurement">
-      {isLoading && <ReadSkeleton />}
+      {isLoading && <ReadSkeleton title="Generando tu cuento..." messages={wait_phrases} />}
       {!isLoading && completion.length > 1 && <Read tale={completion} />}
     </Section>
   );

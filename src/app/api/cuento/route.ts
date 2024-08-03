@@ -2,7 +2,6 @@ export const runtime = 'edge';
 
 import { speechSchema } from "@/validation-schemas/speech";
 import { turso } from "@/lib/db";
-// import { randomUUID } from "crypto";
 export async function POST( req: Request, res: Response ) {
 
   const formData = await req.formData();

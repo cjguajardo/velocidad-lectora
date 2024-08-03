@@ -2,7 +2,7 @@
 import * as T from "@/lib/tales";
 import { generateText } from 'ai';
 import { cfworkerai } from 'cfworkerai';
-import { system_prompt, system_prompt_2, failsafe_tales, system_prompt_3 } from "@/constants";
+import { system_prompt, system_prompt_2, failsafe_tale, system_prompt_3 } from "@/constants";
 
 export async function generate( words: number ) {
   const text = await generateTale( words, '@cf/meta/llama-3-8b-instruct' );
@@ -88,7 +88,7 @@ export const generateTale = async ( words: number, model: string ): Promise<stri
     return text.split( '\n' )
   } catch ( error ) {
     console.error( { error } )
-    const text = failsafe_tales[words] ?? failsafe_tales[100]
+    const text = failsafe_tale
     return text.split( '\n' )
   }
 }

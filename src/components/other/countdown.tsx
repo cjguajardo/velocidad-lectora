@@ -18,12 +18,15 @@ export default function CountDown(
         audio.currentTime = 0
         audio.play()
       }, 1000 ) )
+
+      document.querySelector( 'body' )?.classList.add( 'overflow-hidden' )
     }
     else {
       setCount( COUNTDOWN_START )
       if ( intervalId ) clearInterval( intervalId as number )
       audio.pause()
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [start] )
 
@@ -43,13 +46,15 @@ export default function CountDown(
       clearInterval( intervalId as number )
       onCountdownFinished()
       audio.pause()
+
+      document.querySelector( 'body' )?.classList.remove( 'overflow-hidden' )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, start] )
 
   if ( !start ) return null
 
-  return ( <div className="backdrop-blur absolute rounded-xl border-white top-0 left-0 text-center flex justify-center items-center w-full h-[100%] bg-white/70 dark:bg-slate-950/70">
+  return ( <div className="backdrop-blur absolute rounded-xl border-white top-0 left-0 text-center flex justify-center items-center w-full h-[100%] max-h-screen bg-white/70 dark:bg-slate-950/70">
     <div className="my-10 p-4 text-9xl text-red-600 drop-shadow-lg" ref={countRef}></div>
   </div> )
 }

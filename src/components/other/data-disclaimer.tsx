@@ -30,12 +30,10 @@ export const WiPDisclaimer = () => <>
   </CardDescription>
   <CardDescription className="mt-4">
     De momento, debes considerar lo siguiente:
-    <ul>
-      <li>La velocidad de lectura es un cálculo aproximado.</li>
-      <li>El texto generado puede no ser coherente.</li>
-      <li>La transcripción de voz a texto puede no ser precisa.</li>
-    </ul>
   </CardDescription>
+  <CardDescription className="ps-4">* La velocidad de lectura es un cálculo aproximado.</CardDescription>
+  <CardDescription className="ps-4">* El texto generado en algunos casos podría no ser coherente.</CardDescription>
+  <CardDescription className="ps-4">* La transcripción de voz a texto puede no ser precisa.</CardDescription>
 </>
 
 const PrivacyDisclaimer = () => <>

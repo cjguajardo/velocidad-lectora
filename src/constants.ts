@@ -132,33 +132,14 @@ Instrucciones:
 4.	Originalidad: Añade elementos creativos y originales al cuento para hacerlo más interesante y entretenido.
 5.  Debes entregar el cuento corregido y mejorado, manteniendo la esencia y la estructura original del cuento.
 `
-interface FailsafeTales {
-  [key: number]: string;
-}
 
-export const failsafe_tales: FailsafeTales = {
-  100: `Lila era una niña curiosa que tenía un globo rojo. Un día, decidió volar con él. Al soltarlo, el globo la llevó a un bosque mágico. Allí conoció a un conejo llamado Tito y a una tortuga llamada Julia.  
-—¡Hola, Lila! —dijo Tito—. 
-¿Quieres jugar con nosotros?
-Lila sonrió y aceptó. Jugaron a las escondidas y se rieron mucho. Al caer la tarde, el globo rojo apareció de nuevo.
-—Es hora de volver a casa —dijo Lila, despidiéndose de sus nuevos amigos.
-Prometió regresar y, con una sonrisa, se elevó hacia el cielo, llena de alegría.`,
-  150: `Lola era una niña curiosa y soñadora que vivía en una pequeña ciudad. Un día, mientras jugaba en el parque, encontró una caja mágica escondida entre los arbustos. Al abrirla, se encontró con dos simpáticos duendes llamados Pepe y Lupe.
-Los duendes le explicaron que la caja era un portal mágico que la llevaría a un mundo fantástico. Lola, emocionada, decidió acompañarlos. Juntos, cruzaron el portal y llegaron a un hermoso bosque lleno de criaturas mágicas.
-Lola conoció a Milo, el unicornio arcoíris, y a Tina, la hada de los sueños. Juntos, vivieron increíbles aventuras y aprendieron valiosas lecciones sobre la amistad y la magia.
-Cuando llegó el momento de volver a casa, Lola se despidió de sus nuevos amigos y prometió regresar pronto. Cruzó el portal con una gran sonrisa, sabiendo que siempre tendría un mágico viaje esperándola.`,
-  200: `Había una vez una niña llamada Lila que vivía en un pequeño pueblo rodeado de montañas. Lila amaba explorar la naturaleza y siempre soñaba con aventuras mágicas. Un día, mientras paseaba por el bosque, encontró una puerta dorada entre los árboles.
-Curiosa, Lila abrió la puerta y se encontró en un mundo lleno de colores brillantes y criaturas fantásticas. Allí conoció a un conejo llamado Toby, que llevaba un sombrero de copa. Toby le dijo: “¡Bienvenida, Lila! Este es el Reino de los Sueños. ¿Quieres ayudarme a encontrar la estrella perdida?”
-Lila, emocionada, aceptó la misión. Juntos, caminaron por prados llenos de flores que cantaban y cruzaron ríos de chocolate. En su camino, se encontraron con una tortuga llamada Julia, que les dio pistas sobre la estrella.
-Finalmente, llegaron a una montaña brillante. Allí, encontraron la estrella atrapada en una telaraña. Con valentía, Lila usó su ingenio y, junto a Toby y Julia, liberaron a la estrella.
-La estrella, agradecida, iluminó el cielo y les prometió que siempre serían amigos. Lila regresó a casa con una sonrisa, sabiendo que la magia siempre estaría en su corazón.`,
-  300: `Había una vez, en un pequeño pueblo, una niña llamada Lila. Lila era curiosa y siempre soñaba con aventuras. Un día, mientras exploraba el bosque cerca de su casa, encontró un pequeño gato de pelaje suave y ojos brillantes. "¡Hola! Soy Pipo", dijo el gato con una voz melodiosa. Lila se sorprendió, pero rápidamente se hizo amiga de Pipo.
+export const failsafe_tale = `Había una vez, en un pequeño pueblo, una niña llamada Lila. Lila era curiosa y siempre soñaba con aventuras. Un día, mientras exploraba el bosque cerca de su casa, encontró un pequeño gato de pelaje suave y ojos brillantes. "¡Hola! Soy Pipo", dijo el gato con una voz melodiosa. Lila se sorprendió, pero rápidamente se hizo amiga de Pipo.
 "¿Quieres vivir una aventura mágica?", preguntó Pipo. Lila asintió emocionada. De repente, el bosque comenzó a brillar y una puerta mágica apareció entre los árboles. Lila y Pipo entraron juntos y se encontraron en un mundo lleno de colores y criaturas fantásticas.
 En este nuevo lugar, conocieron a una mariposa llamada Lila, que tenía alas de arcoíris. "¡Bienvenidos! Aquí todo es posible. ¿Quieren ayudarme a encontrar el polvo de estrellas?", les preguntó. Lila y Pipo aceptaron encantados.
 Juntos, viajaron por montañas de caramelos y ríos de chocolate. En su camino, se encontraron con un oso llamado Bruno, que estaba triste porque había perdido su miel. Lila y Pipo decidieron ayudarlo. Con la ayuda de la mariposa, encontraron la miel escondida en un árbol gigante.
 Bruno estaba tan feliz que les regaló un frasco de miel mágica. "Esta miel les dará un deseo", dijo. Lila pensó en su hogar y en su familia. "Deseo que todos estén felices", dijo con una sonrisa.
 De repente, Lila y Pipo regresaron al bosque, pero ahora todo brillaba más. Habían cumplido su deseo. Desde ese día, Lila y Pipo siguieron explorando el bosque, sabiendo que la verdadera magia estaba en la amistad y en ayudar a los demás.`
-}
+
 
 export const wait_phrases = [
   "Ajustando las plumas y preparando la tinta… ¡tu historia está a punto de comenzar!",
@@ -171,4 +152,27 @@ export const wait_phrases = [
   "Afinando los detalles y añadiendo un toque de magia… ¡tu cuento está en camino!",
   "Consultando a los sabios y reescribiendo párrafos… ¡tu historia está a punto de despegar!",
   "Escribiendo, borrando y volviendo a escribir… ¡tu cuento perfecto está por llegar!",
+]
+
+export const speech_analisys_phrases = [
+  "Ajustando los micrófonos... ¡Pronto sabrás qué tan rápido lees!",
+  "Detectando voces y palabras... ¡El suspense está en el aire!",
+  "Preparando el análisis de tu voz... ¡No te quedes sin palabras!",
+  "Tus palabras están en la cinta... ¡Estamos a punto de desvelar la velocidad!",
+  "Capturando tu lectura... ¡La velocidad lectora está en camino!",
+  "Procesando cada sílaba... ¡Este no es un trabalenguas, es ciencia!",
+  "Ajustando las frecuencias... ¡Tus resultados están a punto de sonar!",
+  "Analizando cada palabra... ¡Estamos en la recta final!",
+  "Preparando los gráficos de velocidad... ¡Tus resultados están al borde del éxito!",
+  "Midiendo el ritmo de tu lectura... ¡Tu velocidad lectora está en breve!",
+  "Tus palabras se están tomando un café... ¡Pronto tendremos tus resultados!",
+  "Afinando cada nota de tu voz... ¡La velocidad lectora está a la vuelta de la esquina!",
+  "Leyendo entre líneas... ¡Tus resultados están casi listos!",
+  "Procesando tus palabras como una melodía... ¡Pronto sabrás tu velocidad!",
+  "Tus resultados están en el horno... ¡A punto de salir calentitos!",
+  "Sincronizando cada frase... ¡No desesperes, ya casi están listos!",
+  "Tus palabras están en una pista de carreras... ¡Vamos a medir la velocidad!",
+  "Tus resultados están a punto de despegar... ¡Prepárate para la velocidad!",
+  "Tus palabras están en una banda sonora... ¡Los resultados están por llegar!",
+  "Calculando tu ritmo de lectura... ¡Espera un momento para la gran revelación!"
 ]
