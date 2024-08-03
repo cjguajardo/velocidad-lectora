@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+*storybook.log
+*.csv
+tales-2024-08-01T13:42:54.514Z.json
+tales-2024-08-01T13:44:12.922Z.json
+
