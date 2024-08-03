@@ -13,7 +13,7 @@ export default function PageHeader() {
 }
 
 export function CustomHeader( { title }: { title: string } ) {
-  return <div className="z-10 w-full max-w-5xl items-center justify-between font-mono lg:flex h-[56px] bg-slate-800/90">
+  return <div className="z-10 w-full max-w-5xl items-center justify-between font-mono lg:flex h-[56px] bg-slate-800/90 lg:bg-transparent">
     <div className="fixed left-0 top-0 flex w-full justify-center pb-6 pt-8 backdrop-blur-2xl">
       <p className="text-bold text-lg">{title}</p>
     </div>
