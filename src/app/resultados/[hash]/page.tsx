@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import Confetti from "@/components/other/confetti";
 import { CustomHeader } from "@/components/other/page-header";
 import Section from "@/components/other/section";

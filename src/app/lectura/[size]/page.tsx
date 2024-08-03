@@ -1,5 +1,5 @@
 'use client'
-
+export const runtime = 'edge';
 import { getWordsFromSize } from "@/lib/tales";
 import Read from "@/components/other/read";
 import ReadSkeleton from "@/components/other/read-skeleton";
