@@ -72,6 +72,12 @@ export default function useRecorder( {
     if ( recorderState.startRecording ) {
       const mediaRecorder = recorderState.mediaRecorder;
       mediaRecorder.start( maxTimeToRecord * 1000 );
+      setRecorderState( ( prevState ) => {
+        return {
+          ...prevState,
+          isRecording: true
+        };
+      } )
       mediaRecorder.addEventListener( 'dataavailable', ( event: BlobEvent ) => {
         const reader = new FileReader();
         reader.readAsDataURL( event.data );
