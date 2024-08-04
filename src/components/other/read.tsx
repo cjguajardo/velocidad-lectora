@@ -23,6 +23,7 @@ export default function Read(
   const [startCountdown, setStartCountdown] = useState<boolean>( false )
   const router = useRouter()
   const [fetching, setFetching] = useState<boolean>( false )
+  const [isRedirecting, setIsRedirecting] = useState<boolean>( false )
 
   const handleStart = () => {
     setStartCountdown( true )
@@ -58,6 +59,7 @@ export default function Read(
       } )
         .then( response => response.json() )
         .then( data => {
+          setIsRedirecting( true )
           router.push( '/resultados/' + data.hash )
         } )
         .finally( () => {
@@ -67,10 +69,9 @@ export default function Read(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recorderState.audio, recorderState.progress] )
 
-  if ( fetching ) {
+  if ( fetching || isRedirecting ) {
     return <LoadingSkeleton title="Un momento por favor..." messages={speech_analisys_phrases} />
   }
-
 
   return <div className="mb-10 lg:mb-32 text-center lg:mb-0 w-full lg:max-w-5xl lg:text-left gap-4">
     <Card>
