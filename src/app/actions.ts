@@ -7,12 +7,6 @@ import { system_prompt, system_prompt_2, failsafe_tale, system_prompt_3 } from "
 export async function generate( words: number ) {
   const text = await generateTale( words, '@cf/meta/llama-3-8b-instruct' );
 
-  // const result = await isTextInFullSpanish( text.join( '\n' ) );
-  // if ( !result.Spanish ) {
-  //   const new_text = await amendTale( text, '@cf/meta/llama-3.1-8b-instruct' );
-  //   return new_text;
-  // }
-
   return text;
 }
 
@@ -38,7 +32,6 @@ export async function isTextInFullSpanish( textToCheck: string, model?: string )
 
   try {
     const json = JSON.parse( jsonString );
-    // console.log( { json } );
     return json;
   } catch ( error ) {
     const json: TextInFullSpanish = {

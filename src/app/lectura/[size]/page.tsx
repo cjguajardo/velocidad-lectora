@@ -3,7 +3,7 @@ export const runtime = 'edge';
 import { getWordsFromSize } from "@/lib/tales";
 import Read from "@/components/other/read";
 import ReadSkeleton from "@/components/other/loading-skeleton";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { generate } from "@/app/actions";
 import Section from "@/components/other/section";
 import { wait_phrases } from "@/constants";
@@ -21,10 +21,6 @@ export default function Page( { params }: { params: { size: string } } ) {
     } );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [] );
-
-  useEffect( () => {
-    console.log( { isLoading, completion: completion.length } );
-  }, [isLoading, completion] );
 
   return (
     <Section role="read-measurement">
