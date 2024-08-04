@@ -11,6 +11,15 @@ const tales: {
 }[] = []
 const words = 150
 
+
+/**
+ * Además de testear la función `generateTale`, este test está pensado para determinar el mejor modelo para generar cuentos en español.
+ * O por lo menos el modelo menos susceptible a generar palabras en inglés y/o terminos extranios.
+ * 
+ * Besides testing the `generateTale` function, this test is designed to determine the best model to generate tales in Spanish.
+ * Or at least to get the model less susceptible to generate English words and/or strange terms.
+ */
+
 // Set to true to use the csv file if available
 const useCSVIfAvailable = false
 
@@ -105,7 +114,6 @@ describe( 'isTextInFullSpanishForAll', async () => {
     for await ( const item of tales ) {
       const stringTale = item.tale.join( ' ' )
       const result = await isTextInFullSpanish( stringTale, models[7] );
-      // console.log( { result, model: item.model } );
       if ( typeof stats[item.model] === 'undefined' ) {
         stats[item.model] = { total: 0, spanish: 0 }
       }

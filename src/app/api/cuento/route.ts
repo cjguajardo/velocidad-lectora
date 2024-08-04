@@ -9,6 +9,12 @@ export async function POST( req: Request, res: Response ) {
   const { audio, words, text } = speechSchema.parse( Object.fromEntries( formData ) );
 
   try {
+    /** 
+     * Si, lo sé, debería usar vercel ai, pero aún no he implementado el soporte para el envío de 
+     * archivos de audio con el provider cfworkerai, así que por ahora, usaré fetch directamente.
+     * Pero si se está usando en el server action `generate`: src/app/actions.ts el provider cfworkerai con vercel ai.
+     * De momento cfworkerai soporta text-to-text y image-to-text, pero aún no audio-to-text, pronto.
+    */
     const response = await fetch( process.env.CF_WHISPER_URL as string, {
       method: 'POST',
       headers: {
@@ -18,6 +24,16 @@ export async function POST( req: Request, res: Response ) {
     } );
 
     const { result } = await response.json();
+
+    if ( typeof result.words === 'undefined' ) {
+      return Response.error();
+    }
+
+    /**
+     * This calculations are at a very basic level, mainly because this is a PoC.
+     * There are some other considerations to take into account, like words that are not in the text,
+     * or words that are repeated, etc.
+     */
 
     let totalTime = 0;
     for ( const word of result.words ) {
@@ -41,17 +57,10 @@ export async function POST( req: Request, res: Response ) {
 
     const uuid = crypto.randomUUID();
 
-    /** 
-    uuid string PRIMARY KEY,
-    user_uuid string NOT NULL,
-    wpm integer NOT NULL,
-    words_readed integer DEFAULT 0,
-    words_total integer DEFAULT 0,
-    text_readed string DEFAULT "",
-    duration integer DEFAULT 0,
-    full_text string DEFAULT ""
-    */
-
+    /**
+     * This data is stored in a database, so the user can see the results later.
+     * For this PoC, all records are stored in the same user, but in a real application, this should be associated with the user.
+     */
     await turso.execute( {
       sql: `INSERT INTO results (uuid, user_uuid, wpm, words_readed, words_total, text_readed, duration, full_text) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       args: [
